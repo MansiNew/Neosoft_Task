@@ -1,0 +1,13 @@
+package com.neo.kafkaConsumer;
+
+import org.springframework.kafka.annotation.KafkaListener;
+
+import com.neo.model.Student;
+
+public class StudentConsumer {
+	 @KafkaListener(topics = "first", groupId = "first-group")
+	    public void listen(Student student) {
+
+	      
+	    }
+}

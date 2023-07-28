@@ -1,0 +1,8 @@
+package com.neo.kafkaproducer;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class StudentProducerService {
+KafkaTemplate<String,Student> kafkaTemplate;
+}

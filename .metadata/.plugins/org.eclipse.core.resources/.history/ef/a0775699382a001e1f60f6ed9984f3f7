@@ -1,0 +1,20 @@
+package com.neo.config;
+
+import java.util.Properties;
+
+import javax.imageio.spi.ServiceRegistry;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+
+import com.neo.model.Address;
+import com.neo.model.Department;
+import com.neo.model.Employee;
+
+public class HibernateConfig {
+	
+	
+}

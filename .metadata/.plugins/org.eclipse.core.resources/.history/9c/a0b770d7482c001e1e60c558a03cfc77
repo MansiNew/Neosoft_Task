@@ -1,0 +1,22 @@
+package com.neo.kafkaproducer;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.neo.model.Student;
+
+
+public class StudentProducer {
+KafkaTemplate<String,Student> kafkaTemplate;
+public static final String topic="first";
+public StudentProducer(KafkaTemplate<String, Student> kafkaTemplate) {
+	super();
+	this.kafkaTemplate = kafkaTemplate;
+}
+
+public void publishStudentToTopic(Student student) {
+	System.out.println("publish student: "+student);
+	kafkaTemplate.send(topic, student);
+}
+
+}

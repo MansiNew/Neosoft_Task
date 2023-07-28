@@ -1,0 +1,27 @@
+package com.neo.dao;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+
+import com.neo.config.HibernateConfig;
+import com.neo.model.Employee;
+
+@Repository
+public class EmployeeDao {
+	/* public void createEmployee(Employee employee) {
+	    	//Session session = entityManager.unwrap(Session.class);
+	    	//Transaction transaction = session.beginTransaction();
+	    	//session.save(employee);
+		   Transaction transaction=null;
+		   try(Session session=HibernateConfig.getSesionFactory().openSession()){
+			 transaction=session.beginTransaction()  ; 
+			session.save(employee);
+			transaction.commit();
+		   }catch(Exception e) {
+			   if(transaction!=null) {
+				   transaction.rollback();
+			   }
+		   }
+	    }*/
+}

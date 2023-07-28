@@ -1,0 +1,22 @@
+package com.neo.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.neo.model.Employee;
+import com.neo.service.EmployeeServie;
+
+
+
+@RestController
+public class EmployeeController {
+	@Autowired
+private EmployeeServie empService;
+	@PostMapping("/create")
+public void createEmployee(@RequestBody Employee employee) {
+	empService.createEmployee(employee);
+}
+}

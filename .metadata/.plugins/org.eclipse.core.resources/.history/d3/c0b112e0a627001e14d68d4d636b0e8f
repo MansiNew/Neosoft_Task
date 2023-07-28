@@ -1,0 +1,57 @@
+package com.neo.service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import com.neo.model.Student;
+import com.neo.repo.StudentRepo;
+
+@Service
+public class StudentService {
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	@Autowired
+	private StudentRepo studentRepo;
+
+
+	public Student createStudent(Student student) {
+		// TODO Auto-generated method stub
+		return studentRepo.save(student);
+
+	}
+
+	
+	public Optional<Student> findByRollNum(long rollNum) {
+		// TODO Auto-generated method stub
+		return studentRepo.findById(rollNum);
+	}
+	
+	public List<Student> findAllStudents() {
+		// TODO Auto-generated method stub
+		return studentRepo.findAll();
+	}
+
+@Scheduled(cron="* */3  * * * *")
+	public void schedulingJob() {
+	//Queue<Student> q=new PriorityQueue();
+	
+		LocalDateTime date=LocalDateTime.now();
+		List<Student> findAllStudents = findAllStudents();
+		for(Student s:findAllStudents) {
+		//	q.add(s);
+			
+			jmsTemplate.convertAndSend("first_queue", s);	
+		System.out.println(s+"  =>"+date);
+	}
+}
+
+}

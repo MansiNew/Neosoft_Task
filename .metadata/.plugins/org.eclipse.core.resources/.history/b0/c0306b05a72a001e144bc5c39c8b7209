@@ -1,0 +1,81 @@
+package com.neo.config;
+
+import java.util.Properties;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+
+import com.neo.model.Address;
+import com.neo.model.Department;
+import com.neo.model.Employee;
+
+public class HibernateConfig {
+	private static SessionFactory sessionFactory;
+	/*public static  SessionFactory getSesionFactory()  {
+		if(sessionFactory==null) {
+			try {
+				Configuration config=new Configuration();	
+				Properties property=new Properties();
+				property.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+				property.put(Environment.URL, "jdbc:mysql://localhost:3306/employeeApp");
+				property.put(Environment.USER, "root");
+				property.put(Environment.PASS, "password_123");
+				property.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
+				property.put(Environment.SHOW_SQL," true");
+				property.put(Environment.HBM2DDL_AUTO, "create");
+				property.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+				config.setProperties(property);
+				config.addAnnotatedClass(Employee.class);
+				config.addAnnotatedClass(Department.class);
+				config.addAnnotatedClass(Address.class);
+				 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+		                    .applySettings(config.getProperties()).build();
+
+		              
+						// config.buildSessionFactory(serviceRegistry);
+				 sessionFactory = config.buildSessionFactory(serviceRegistry);
+						
+						} catch( Exception e) {
+					e.printStackTrace();
+				} 
+			
+		}
+		return sessionFactory;
+	}*/
+	
+	public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration();
+
+                // Hibernate settings equivalent to hibernate.cfg.xml's properties
+                Properties settings = new Properties();
+                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate_db?useSSL=false");
+                settings.put(Environment.USER, "root");
+                settings.put(Environment.PASS, "root");
+
+                settings.put(Environment.SHOW_SQL, "true");
+
+                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+
+                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+
+                configuration.setProperties(settings);
+
+                configuration.addAnnotatedClass(Employee.class);
+
+                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                    .applySettings(configuration.getProperties()).build();
+configuration.buildSessionFactory(serviceRegistry);
+                           } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sessionFactory;
+    }
+	
+}

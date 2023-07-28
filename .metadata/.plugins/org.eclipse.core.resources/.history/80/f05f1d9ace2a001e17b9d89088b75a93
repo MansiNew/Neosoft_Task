@@ -1,0 +1,58 @@
+package com.neo.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
+
+import com.neo.config.HibernateConfig;
+import com.neo.model.Employee;
+
+@Repository
+public class EmployeeDao {
+	 public void createEmployee(Employee employee) {
+	    	//Session session = entityManager.unwrap(Session.class);
+	    	//Transaction transaction = session.beginTransaction();
+	    	//session.save(employee);
+		   Transaction transaction=null;
+		   try(Session session=HibernateConfig.getSessionFactory().openSession()){
+			 transaction=session.beginTransaction()  ; 
+			session.save(employee);
+			transaction.commit();
+		   }catch(Exception e) {
+			   if(transaction!=null) {
+				   transaction.rollback();
+			   }
+		   }
+	    }
+	/* public List<Employee> findAllEmployee(){
+		 Transaction transaction=null;
+			List<Employee> empList=null;
+		   try(Session session=HibernateConfig.getSessionFactory().openSession()){
+			 transaction=session.beginTransaction()  ; 
+			Query<Employee> createQuery = session.createQuery("from Emlployee",Employee.class);
+			 empList = createQuery.list();
+			
+			transaction.commit();
+			return empList;
+		   }catch(Exception e) {
+			   if(transaction!=null) {
+				   transaction.rollback();
+			   }
+		   }
+		   return empList;
+	 }*/
+	 public ListEmployee> findAllEmployee() {
+		    try {
+		        return sessionFactory.getCurrentSession()
+		        .createQuery("FROM USER")
+		        .getResultList(); 
+		    }
+		    catch (Exception e) {
+		        throw new RuntimeException(e);
+		    }
+		}
+	 
+}

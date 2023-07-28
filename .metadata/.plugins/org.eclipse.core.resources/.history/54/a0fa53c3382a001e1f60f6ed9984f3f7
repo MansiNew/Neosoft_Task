@@ -1,0 +1,23 @@
+package com.neo.service;
+
+
+
+
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.neo.dao.EmployeeDao;
+import com.neo.model.Employee;
+
+@Service
+public class EmployeeServie {
+	@Autowired
+	private EmployeeDao empDao;
+		@Transactional
+		public void createEmployee(Employee employee) {
+			empDao.createEmployee(employee);
+		}
+}

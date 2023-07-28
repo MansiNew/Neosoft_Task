@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;JmsConfig.java&apos; to &apos;producerApp/src/main/java/com.neo.config&apos;&#x0D;&#x0A;- Original project: &apos;activeMqApp&apos;&#x0D;&#x0A;- Destination element: &apos;producerApp/src/main/java/com.neo.config&apos;&#x0D;&#x0A;- Original element: &apos;com.neo.config.JmsConfig.java&apos;" description="Copy compilation unit" destination="=producerApp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.neo.config" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.neo.config{JmsConfig.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1689845364063" units="1" version="1.0"/>
+</session>
