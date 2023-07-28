@@ -9,7 +9,6 @@ import java.util.Queue;
 
 import javax.annotation.Resource;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,9 +21,9 @@ import com.neo.repo.StudentRepo;
 public class StudentService {
 	@Autowired
 	private JmsTemplate jmsTemplate;
-	
+
 	@Autowired
-private  StudentRepo studentRepo;
+	private StudentRepo studentRepo;
 
 	public Student createStudent(Student student) {
 		// TODO Auto-generated method stub
@@ -32,30 +31,26 @@ private  StudentRepo studentRepo;
 
 	}
 
-	
 	public Optional<Student> findByRollNum(long rollNum) {
 		// TODO Auto-generated method stub
 		return studentRepo.findById(rollNum);
 	}
-	
+
 	public List<Student> findAllStudents() {
 		// TODO Auto-generated method stub
 		return studentRepo.findAll();
 	}
 
-@Scheduled(cron="* */3  * * * *")
+	@Scheduled(cron = "* */3  * * * *")
 	public void schedulingJob() {
-	//Queue<Student> q=new PriorityQueue();
-	
-		LocalDateTime date=LocalDateTime.now();
+		LocalDateTime date = LocalDateTime.now();
 		List<Student> findAllStudents = findAllStudents();
-		for(Student s:findAllStudents) {
-			//queue.add(s);
-			
+		for (Student s : findAllStudents) {
+
 			jmsTemplate.convertAndSend("first_queue", s);
-			
-		System.out.println(s+"  =>"+date);
+
+			System.out.println(s + "  =>" + date);
+		}
 	}
-}
 
 }

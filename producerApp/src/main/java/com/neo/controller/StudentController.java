@@ -34,26 +34,15 @@ public class StudentController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("Student roll number is already exist so you cannot create this rollnumber student");
 		}
-		//jmsTemplate.convertAndSend("first_topic", student);
+
 		jmsTemplate.convertAndSend("first_queue", student);
 		Student createStudent = studentService.createStudent(student);
-		
-		//studentService.schedulingJob();
+
 		return new ResponseEntity<Student>(createStudent, HttpStatus.OK);
 
 	}
 	
-	/*@PostMapping("/createStudent")
-	public ResponseEntity<String> publishPersonMessage(@RequestBody Student student){
-		try {
-		//String destinationName = null;
-		//jmsTemplate.convertAndSend(destinationName +"first_queue", systemMessage);
-		jmsTemplate.convertAndSend("first_queue", student);
-		return new ResponseEntity<>("message sent successfully for person",HttpStatus.OK);
-		} catch(Exception e){
-			return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-		}*/
-		
+	
 	
 
 

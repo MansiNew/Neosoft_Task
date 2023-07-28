@@ -13,7 +13,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import com.neo.config.WorkerThread;
+
 import com.neo.model.Student;
 
 
@@ -23,24 +23,13 @@ public class StudentConsumer {
 
 	private static final Logger logger=LoggerFactory.getLogger(StudentConsumer.class);
 
-	/*
-	 * @JmsListener(destination = "first_queue") public void consumerPersonr(Student
-	 * student) { ExecutorService executor = Executors.newFixedThreadPool(5); for
-	 * (int i = 0; i < 10; i++) { Runnable worker = new
-	 * WorkerThread("threads executed " +"  "+ student); //
-	 * executor.execute(worker); executor.submit(worker); }
-	 * 
-	 * //logger.info("Message Received byConsumer for student {}" +student);
-	 * executor.shutdown(); while (!executor.isTerminated()) { }
-	 * System.out.println("Finished all threads"); }
-	 */
 	@JmsListener(destination = "first_queue")
 	@Async(value = "taskExecutor")
 	public void consumerPerson(Student student) {
-		logger.info("Message Received byConsumer for student {}" +student);
-		 for (int i = 0; i < 10; i++) {
-	            Runnable worker = new WorkerThread("threads executed " +"  "+ student);
-	         
-	          
-	}
-}}
+		logger.info("Message Received byConsumer for student {}" + student);
+		for (int i = 0; i < 10; i++) {
+			System.out.println(Thread.currentThread().getName() + " Start. Command = thread executed " + student);
+			System.out.println(Thread.currentThread().getName() + " End.");
+
+		}
+	}}

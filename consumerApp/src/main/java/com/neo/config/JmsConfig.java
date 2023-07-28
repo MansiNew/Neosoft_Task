@@ -26,14 +26,6 @@ public class JmsConfig {
 		jmsListenerContainerFactory.setConcurrency("5-10");
 		return jmsListenerContainerFactory;
 	}
-
-	/*@Bean(name = "taskExecutor")
-	public ExecutorService getMyTaskExecutor() {
-		return  Executors.newFixedThreadPool(4);
-		
-		 
-
-	}*/
 	@Bean(name = "taskExecutor")
 	public ThreadPoolExecutorFactoryBean getMyTaskExecutor() {
 	 ThreadPoolExecutorFactoryBean factoryBean = new ThreadPoolExecutorFactoryBean();
