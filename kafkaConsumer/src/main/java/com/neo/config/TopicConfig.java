@@ -34,6 +34,7 @@ public class TopicConfig {
 	public NewTopic topic() {
 		return TopicBuilder.name("first").build();
 	}
+	
 	@Bean
     public ConsumerFactory<String, Student> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
