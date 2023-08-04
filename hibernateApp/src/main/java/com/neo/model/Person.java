@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 @Entity
 @Table(name="person")
@@ -19,7 +21,7 @@ public class Person {
 	    private long pId;
 	    private String name;
 	    private String phNumber;
-	    @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+	    @OneToMany( cascade = CascadeType.MERGE,fetch=FetchType.EAGER,mappedBy="person")
 	    private List<Account> account;
 	   
 }

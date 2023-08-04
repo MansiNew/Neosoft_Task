@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,8 +24,8 @@ public class Employee {
 	private Long empId;
 	private String name;
 	private double salary;
-	@OneToOne(cascade=CascadeType.ALL,targetEntity=Department.class)
-	@JoinColumn(name="deptId")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="deptId",referencedColumnName="deptId")
 	private Department department;
 }
 

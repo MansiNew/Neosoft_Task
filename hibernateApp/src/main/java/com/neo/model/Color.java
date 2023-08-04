@@ -7,10 +7,10 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name="color")
 @Data
-@Table(name="school")
-public class School {
+public class Color {
 	@Id
-	private Long schId;
-	private String name;
+	private long cId;
+	private String cName;
 }

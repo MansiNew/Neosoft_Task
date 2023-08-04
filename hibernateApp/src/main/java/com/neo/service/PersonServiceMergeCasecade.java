@@ -11,17 +11,18 @@ import com.neo.config.HibernateConfig;
 import com.neo.dao.PersonDao;
 import com.neo.model.Person;
 
-@Service
-public class PersonServicePersistCasecade {
+@Service 
+public class PersonServiceMergeCasecade {
 	@Autowired
 private PersonDao personDao;
 	@Transactional
-	 public void createPersonByPersist(Person person) {
-    	personDao.createPersonByPersist(person);
-	    }
-	@Transactional
-	 public void createPersonBySave(Person person) {
-	    personDao.createPersonBySave(person);	
-		 
+	 public void updatePerson(Person person) {
+	    personDao.updatePerson(person);	
+		  
+	    }	
+	 @Transactional
+	 public void createPerson(Person person) {
+	    	
+		  personDao.createPerson(person); 
 	    }
 }

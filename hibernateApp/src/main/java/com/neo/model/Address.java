@@ -20,18 +20,23 @@ import lombok.Data;
 @IdClass(AddressCompositeKey.class)
 @Table(name="address")  
 public class Address {
+	
 	@Id 
-private Long addId;
+	private Long addId;
+	
 	@Id
 	@Column(name="ADDRESS_CITY")
-private String city;
+	private String city;
+	
 	@Id
 	@Column(name="ADDRESS_STATE")
-private String state;
+	private String state;
+	
 	@Id
 	@Column(name="ADDRESS_COUNTRY")
-private String country;
-private String apartment;
+	private String country;
+	
+	private String apartment;
 }
 
 
