@@ -13,9 +13,18 @@ import lombok.Data;
 @Data
 @Table(name="student")
 public class Student {
+	
 	@Id
 	private Long stId;
-	private String name;
-	@OneToOne(cascade=CascadeType.PERSIST,targetEntity=School.class)
-	private School school;
+	
+	private String stName;
+	
+	private String marks;
+	
+	private String department;
+	
+	private int age;
+	
+	private String mobile;
+	
 }

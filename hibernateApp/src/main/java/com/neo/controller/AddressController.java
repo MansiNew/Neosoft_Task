@@ -19,7 +19,6 @@ public class AddressController {
 			addressService.createAddress(address);
 		
 		}
-	
 		@GetMapping("/findAllAddress")
 		public List<Address> findAllAddress() {
 			return addressService.findAllAddress();

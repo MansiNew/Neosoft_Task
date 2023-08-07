@@ -18,7 +18,7 @@ public class User {
 	@Id
 	private long uId;
 	private String uName;
-		@OneToOne(cascade = CascadeType.DETACH,targetEntity=IdentityCard.class)
+		@OneToOne(cascade = CascadeType.REMOVE,targetEntity=IdentityCard.class)
 		@JoinColumn(name="cardId")
 	private IdentityCard identityCard;
 }

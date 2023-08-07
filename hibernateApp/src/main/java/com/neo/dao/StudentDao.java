@@ -5,17 +5,16 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.neo.config.HibernateConfig;
-import com.neo.model.Hospital;
-import com.neo.model.User;
+import com.neo.model.Employee;
+import com.neo.model.Student;
 
 @Repository
-public class UserDao {
-	public void createUser(User user) {
-
+public class StudentDao {
+	public void createStudent(Student student) {
 		Transaction transaction = null;
 		try (Session session = HibernateConfig.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
-			session.save(user);
+			session.persist(student);
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -24,21 +23,17 @@ public class UserDao {
 		}
 	}
 
-	public void deleteUser(Long uId) {
+	public void updateStudent(Student student) {
+
 		Transaction transaction = null;
-		User user = null;
 		try (Session session = HibernateConfig.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
-
-			user = session.get(User.class, uId);
-			session.delete(user);
+			session.saveOrUpdate(student);
 			transaction.commit();
-
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
 			}
 		}
-
 	}
 }

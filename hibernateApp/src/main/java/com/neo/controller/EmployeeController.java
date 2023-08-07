@@ -27,7 +27,7 @@ private EmployeeServie empService;
 public void createEmployee(@RequestBody Employee employee) {
 	empService.createEmployee(employee);
 }
-	
+
 	@GetMapping("/findAll")
 	public List<Employee> findAllEmployee() {
 		return empService.findAllEmployee();
@@ -40,7 +40,7 @@ public void createEmployee(@RequestBody Employee employee) {
 	public void deleteEmployee(@PathVariable("empId") Long empId) {
 		empService.deleteEmployee(empId);
 	}
-@PutMapping("/update")
+@PutMapping("/updateEmployee")
 public void updateEmployee(@RequestBody Employee employee) {
 	empService.updateEmployee(employee);
 }

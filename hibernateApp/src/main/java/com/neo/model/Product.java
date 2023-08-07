@@ -10,12 +10,13 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name="product")
 @Data
-@Table(name="student")
-public class Student {
+public class Product {
 	@Id
-	private Long stId;
-	private String name;
-	@OneToOne(cascade=CascadeType.PERSIST,targetEntity=School.class)
-	private School school;
+	private long prId;
+	private String prName;
+		@OneToOne(cascade = CascadeType.DETACH,targetEntity=Color.class)
+		@JoinColumn(name="cId")
+	private Color color;
 }
