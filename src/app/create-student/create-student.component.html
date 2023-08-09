@@ -1,0 +1,42 @@
+
+<div style="color: blue;" class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3> Welcome to Student portal</h3>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>student id</label>
+                        <input type="text" formControlName="stId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Student name</label>
+                        <input type="text" formControlName="stName" class="form-control" />
+                       
+                    </div>
+                    <div class="form-group">
+                        <label>student marks</label>
+                        <input type="text" formControlName="marks" class="form-control" />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>student department</label>
+                        <input type="password" formControlName="department" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>student age</label>
+                        <input type="password" formControlName="age" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>student mobile</label>
+                        <input type="password" formControlName="mobile" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

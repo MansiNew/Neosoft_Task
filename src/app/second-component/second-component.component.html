@@ -1,0 +1,39 @@
+
+<div class="second">
+   <!--<nav>
+        <ul>
+          <li>mobile</li>
+          <li>laptop</li>
+          <li>charger</li>
+        </ul>
+        <div><h1 app:Details>This is my Details diective created by me</h1></div>
+      </nav>-->
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">stId</th>
+          <th scope="col">stName</th>
+          <th scope="col">Marks</th>
+          <th scope="col">department</th>
+          <th scope="col">age</th>
+          <th scope="col">mobile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.stId }}</td>
+          <td>{{ student.stName }}</td>
+          <td>{{ student.marks }}</td>
+          <td>{{ student.department }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.mobile }}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
