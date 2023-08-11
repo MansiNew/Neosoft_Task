@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.neo.dto.EmployeeAddtessDto;
 import com.neo.dto.EmployeeResponseDto;
+import com.neo.exception.InternalServerException;
 import com.neo.model.Employee;
 import com.neo.service.EmployeeService;
 
@@ -26,8 +28,13 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/findEmployeeWithAddress/{empId}")
-	public ResponseEntity<EmployeeResponseDto> findEmployee(@PathVariable("empId") Long empId) {
+	public ResponseEntity<EmployeeResponseDto> findEmployee(@PathVariable("empId") Long empId) throws InternalServerException {
 		EmployeeResponseDto employeeResponseDto = empService.findEmployee(empId);
 		return ResponseEntity.ok(employeeResponseDto);
 	}
+	@PostMapping("/saveEmployeeAddressByEmployee")
+	 public ResponseEntity<EmployeeAddtessDto> saveEmployeeAddress(@RequestBody EmployeeAddtessDto empAddress) throws InternalServerException{
+		return empService.saveEmployeeAddress(empAddress) ;
+	 }
+	
 }

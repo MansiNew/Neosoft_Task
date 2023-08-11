@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.neo.model.Department;
 import com.neo.model.EmployeeAddress;
 import com.neo.repo.EmployeeAddressRepo;
@@ -21,7 +22,7 @@ public class EmployeeAddressController {
 	private EmployeeAddressService empAddressService;
 	
 	@PostMapping("/saveEmployeeAddress")
-    public ResponseEntity<EmployeeAddress> saveDepartment(@RequestBody EmployeeAddress empAddress){
+    public ResponseEntity<EmployeeAddress> saveEmployeeAddress(@RequestBody EmployeeAddress empAddress){
         EmployeeAddress savedEmpAddress = empAddressService.saveEmployeeAddress(empAddress);
         return new ResponseEntity<>(savedEmpAddress , HttpStatus.CREATED);
     }
