@@ -1,6 +1,8 @@
 package com.neo.controller;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +19,7 @@ import com.neo.repo.StudentRepository;
 
 @RestController
 public class StudentController {
+	
 @Autowired
 	private StudentRepository studentRepo;
 
@@ -29,8 +32,8 @@ public Student findStudent(@PathVariable Long rollNum) {
 	return studentRepo.findStudent(rollNum);
 }
 
-@GetMapping("/findAllStudents")
-public Map<String,Student> getAllStudents(){
+@GetMapping("/findAllStudentsMap")
+public Map<Long,Student> getAllStudents(){
 	return  studentRepo.getAllStudents();
 }
 
@@ -43,4 +46,39 @@ return studentRepo.updateStudent(student);
 public void  deleteStudent(@PathVariable Long rollNum) {
 	studentRepo.deleteStudent(rollNum);
 }
+
+
+@GetMapping("/findStudentsKeySet")
+public Set<Long> findStudentsKeysSet(){
+	return studentRepo.findStudentsKeysSet();
+}
+
+@PostMapping("/findAllStudentsByKeyList")
+public List<Student> getAllStudents(@RequestBody List<Long> keyList){
+	return studentRepo.findAllStudentsByKeyList( keyList);
+}
+
+@GetMapping("/findAllStudentsByHKey")
+public List<Student> findAllStudentsByHKey(){
+	return studentRepo.findAllStudentsByHKey();	
+}
+
+@PostMapping("/saveStudentMap")
+public void   saveStudentMap(@RequestBody Map<Long,Student> studentMap){
+	studentRepo.saveStudentMap(studentMap);
+}
+
+
+@GetMapping("/sizeOfHash")
+public Long sizeOfHash() {
+	return studentRepo.sizeOfHash();
+}
+
+@PostMapping("/saveStudentIfKeyNotExist")
+public boolean saveStudentIfKeyIsNotPresent(@RequestBody Student student) {
+	return studentRepo.saveStudentIfKeyIsNotPresent(student);
+}
+
+
+
 }

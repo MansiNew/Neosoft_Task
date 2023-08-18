@@ -31,6 +31,7 @@ public class RedisCacheConfiguration {
 	      = new JedisConnectionFactory();
 	    jedisConFactory.setHostName("localhost");
 	    jedisConFactory.setPort(6379);
+	    jedisConFactory.setTimeout(6000);
 	    return jedisConFactory;
 	}
 	
